@@ -23,11 +23,7 @@ class AmazonSpider(scrapy.Spider):
             product_price_all = product_price_one + product_price_all
         
 
-        items['product_name'] = product_name
-        items['product_url'] = product_url
-        items['product_image'] = product_image
-        items['product_price'] = product_price_all
-
+        
         row_data=zip(product_name,product_url,product_image,product_price_all)
 
         for item in row_data:
@@ -35,15 +31,15 @@ class AmazonSpider(scrapy.Spider):
             product_url = 'https://amazon.com'+re.search(r'(.*)/(ref.*)',item[1]).group(1)
             product_image = item[2]
             product_price = item[3].replace("$", "")
-            scraped_info = {
-                'name' : product_name,
-                'url' : product_url,
-                'image_url' : product_image,
-                'price' : float(product_price)
-            }
 
+            items['product_name'] = product_name
+            items['product_url'] = product_url
+            items['product_image'] = product_image
+            items['product_price'] = float(product_price)
 
-            yield scraped_info
+            yield items
+
+            
         
         next_page = 'https://www.amazon.com/s?i=kitchen-intl-ship&bbn=16225011011&rh=n%3A16225011011%2Cn%3A10802561&page=' + str(AmazonSpider.page_number) + '&qid=1582894252&ref=sr_pg_2'
 
