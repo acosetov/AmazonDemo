@@ -5,7 +5,7 @@ Write  a crawler that grabs first 3 pages from amazon for selected category:\
 https://www.amazon.com/s?i=specialty-aps&bbn=16225011011&rh=n%3A%2116225011011%2Cn%3A10802561&ref=nav_em_T1_0_4_NaN_15__nav_desktop_sa_intl_cleaning_supplies
 
 
-Result should be save to the file "result.jl"
+Result should be save to the file "results.jl"
 
 In the file should be next results:
  - the name of the product
